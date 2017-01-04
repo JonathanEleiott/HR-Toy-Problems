@@ -34,11 +34,24 @@ LinkedList.prototype.addToTail = function(value) {
   }
 };
 
+LinkedList.prototype.hasLoop = function(linkedList) {
+  var runnerOne = linkedList.head;
+  var runnerTwo = linkedList.head;
+  
+  if(!linkedList.head) {
+    return false;
+  }
 
-//YOUR FUNCTION HERE
+  while(runnerOne.value && runnerTwo.value) {
+    runnerOne = runnerOne.next;
+    runnerTwo = runnerTwo.next.next;
 
-LinkedList.prototype.hasLoop = function() {
-
+    if(runnerOne.value === runnerTwo.value) {
+      return true;
+    }
+  }
+  
+  return false;
 };
 
 
